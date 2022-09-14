@@ -32,26 +32,6 @@ function ToyForm({ API, addNewToy }) {
     })
   }
 
-  // function handleSubmit(event) {
-//   event.preventDefault();
-//   const questionData = {
-//     prompt: formData.prompt,
-//     correctIndex: formData.correctIndex,
-//     answers: [formData.answer1, formData.answer2, formData.answer3, formData.answer4],
-//   }
-//   fetch ("http://localhost:4000/questions", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(questionData)
-//   })
-//   .then((r) => r.json())
-//   .then((newQuestion) => onAddQuestion(newQuestion))
-// }
-
-
-
   return (
     <div className="container">
       <form onSubmit={createToy} className="add-toy-form">

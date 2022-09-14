@@ -1,5 +1,4 @@
 import React from "react";
-import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from "react/cjs/react.production.min";
 
 function ToyCard({ toy, API, handleDeleteToy, handleUpdateToy }) {
   const {name, image, likes} = toy 
@@ -12,7 +11,7 @@ function ToyCard({ toy, API, handleDeleteToy, handleUpdateToy }) {
       .then(() => handleDeleteToy(toy));
   }
 
-  function handleLikeChange(e){
+  function handleLikeIncrease(e){
     fetch(`${API}/${toy.id}`, {
       method: "PATCH",
       headers: {
@@ -26,6 +25,21 @@ function ToyCard({ toy, API, handleDeleteToy, handleUpdateToy }) {
     .then ((updatedToy) => handleUpdateToy(updatedToy))
   }
 
+  function handleLikeDecrease(e){
+    fetch(`${API}/${toy.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        "likes": (likes - 1)
+      })
+    })
+    .then ((r) => r.json())
+    .then ((updatedToy) => handleUpdateToy(updatedToy))
+  }
+
+
   return (
     <div className="card">
       <h2>{name}</h2>
@@ -35,7 +49,10 @@ function ToyCard({ toy, API, handleDeleteToy, handleUpdateToy }) {
         className="toy-avatar"
       />
       <p>{likes} Likes </p>
-      <button className="like-btn" onClick={handleLikeChange}>Like {"<3"}</button>
+      <span>
+        <button className="like-btn" onClick={handleLikeIncrease}>Like {"<3"}</button>{" "}
+        <button className="like-btn" onClick={handleLikeDecrease}>Dislike {"</3"}</button>
+      </span>
       <button className="del-btn" onClick={handleDeleteClick} >Donate to GoodWill</button>
     </div>
   );
