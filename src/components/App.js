@@ -14,10 +14,14 @@ function App() {
     setShowForm((showForm) => !showForm);
   }
 
+  function addNewToy(newToy){
+    setToys([...toys, newToy])
+  }
+
   return (
     <>
       <Header />
-      {showForm ? <ToyForm /> : null}
+      {showForm ? <ToyForm addNewToy={addNewToy} API={API} /> : null}
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
@@ -27,3 +31,7 @@ function App() {
 }
 
 export default App;
+
+// function handleAddQuestion(newQuestion){
+//   setQuestions([...questions, newQuestion])
+// }

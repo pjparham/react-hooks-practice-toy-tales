@@ -43,12 +43,4 @@ function ToyCard({ toy, API, handleDeleteToy, handleUpdateToy }) {
 
 export default ToyCard;
 
-// function handleUpdateQuestion(updatedQuestion){
-//   const updatedQuestions = questions.map((question) => {
-//     if (question.id === updatedQuestion.id) {
-//       return updatedQuestion
-//     } else {return question}
-//   });
-//   setQuestions(updatedQuestions)
-// }
 
